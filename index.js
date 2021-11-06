@@ -2,6 +2,7 @@
 const { initializeApp } = require("firebase/app")
 // import { initializeApp } from "firebase/app";
 const express = require('express');
+const path = require('path');
 const fs = require("fs");
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -9,14 +10,14 @@ const fs = require("fs");
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const jsonOfApiKey = fs.readFileSync("apiKey.json");
+const jsonOfApiKey = fs.readFileSync("firebaseApiKey.json");
 const firebaseConfig = JSON.parse(jsonOfApiKey)
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
 
 // Initialize the Firestore database
-const db = firebase.firestore();
+// const db = firebase.firestore();
 
 // Initiate the express server
 const app = express();
@@ -26,6 +27,8 @@ const port = 8080;
 
 
 // Cron schedule
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(port, () => {
     console.log(`Listening at PORT ${port}`);
