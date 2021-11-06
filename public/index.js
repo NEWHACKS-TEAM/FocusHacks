@@ -4,15 +4,17 @@
 // the link to your model provided by Teachable Machine export panel
 const URL = 'https://teachablemachine.withgoogle.com/models/a-J-UjsEB/';
 
-let model, webcam, labelContainer, maxPredictions;
-let startTracingUserActivity = false;
+let model, webcam, labelContainer, maxPredictions, performanceIndex, isTracingUserActivity;
+performanceIndex = 1000;
+
+isTracingUserActivity = false;
 
 document.querySelector('#resume').style.display = "none";
 document.querySelector('#pause').style.display = "none";
 
 document.querySelector('#start').addEventListener('click', async () => {
   document.querySelector('#start').style.display = "none"; 
-  startTracingUserActivity = true;
+  isTracingUserActivity = true;
   document.querySelector('#loadingSpinner').innerHTML = `
   <div class="spinner-border" role="status">
     <span class="visually-hidden">Loading...</span>
@@ -28,16 +30,15 @@ document.querySelector('#start').addEventListener('click', async () => {
 document.querySelector('#resume').addEventListener('click', async () => {
   document.querySelector('#resume').style.display = "none";
   document.querySelector('#pause').style.display = "";
-  startTracingUserActivity = true;
+  isTracingUserActivity = true;
 })
 
 document.querySelector('#pause').addEventListener('click', () => {
   document.querySelector('#resume').style.display = "";
   document.querySelector('#pause').style.display = "none";
-  startTracingUserActivity = false;
+  isTracingUserActivity = false;
 })
 
-let performanceIndex = 1000;
 
 // Load the image model and setup the webcam
 async function init() {
@@ -69,7 +70,7 @@ async function init() {
 
 async function loop() {
     webcam.update(); // update the webcam frame
-    if (startTracingUserActivity){
+    if (isTracingUserActivity){
       await predict();
     }    
     window.requestAnimationFrame(loop);
@@ -79,11 +80,29 @@ async function loop() {
 async function predict() {
     // predict can take in an image, video or canvas html element
     const prediction = await model.predict(webcam.canvas);
-    performanceIndex += changeIndex(prediction)
+    performanceIndex += changeReferenceScore(prediction)
+    if (performanceIndex <= 0){
+      pauseTrackingUserActivity();
+      await sendEmail();      
+    }
     // console.log(changeScore(prediction))
     for (let i = 0; i < maxPredictions; i++) {
         const classPrediction =
             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
         labelContainer.childNodes[i].innerHTML = classPrediction;
     }
+}
+
+async function sendEmail(){
+  await fetch(route, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json; charset=utf-8",
+    },
+    body: JSON.stringify({sendEmail: true})
+  });
+};
+
+function pauseTrackingUserActivity(){
+  document.querySelector('#pause').click();
 }
