@@ -10,14 +10,14 @@ const {sendEmailWithTwilio} = require("./sendGrid")
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const jsonOfApiKey = fs.readFileSync("firebaseApiKey.json");
-const firebaseConfig = JSON.parse(jsonOfApiKey)
+// const jsonOfApiKey = fs.readFileSync("firebaseApiKey.json");
+// const firebaseConfig = JSON.parse(jsonOfApiKey)
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
+// const firebaseApp = initializeApp(firebaseConfig);
 
 // Initialize the Firestore database
-const db = firebase.firestore();
+// const db = firebase.firestore();
 
 // Initiate the express server
 const app = express();
