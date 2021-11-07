@@ -53,10 +53,10 @@ body {
   }
   .btn-danger{
     padding: 10px 40px;
-    margin-top: -500px;
-  }
+    margin-top: -200px;
+  } 
  section{
    background-color: #04112e;
    padding-left: 47%;
    padding-top: 5%;
- }
+  }
