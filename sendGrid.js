@@ -18,7 +18,7 @@ function sendEmailWithTwilio(username, emailAddress){
 function emailContentConfig(username, emailAddress){
   return {
     to: emailAddress, // Change to your recipient
-    from: 'powerful.idea.project@gmail.com', // Change to your verified sender
+    from: 'focushacks2021@gmail.com', // Change to your verified sender
     subject: `${username}, Stay Focus and You can do it!`,
     text: `“Either you run the day or the day runs you.”`,
     html: emailBodyHtml(username)
