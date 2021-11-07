@@ -1,6 +1,12 @@
-body {
-  background-color: grey;
+*{
+  background-color: #04112e;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
 }
+
 #video-div {
     height: 340px;
     width: 320px;
@@ -19,11 +25,36 @@ body {
  
   .title {
     padding-top: 20px;
-    font-size: 30px;
+    font-size: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 900;
+    color: #66FCF1;
+  }
+  .sub-title{
+    font-size: 15px;
     justify-content: center;
     align-items: center;
     text-align: center;
     font-weight: bold;
     color: white;
+
   }
-  
+  #webcam-container{
+    padding-top: 10px;
+    padding-left: 500px;
+    
+  }
+  .btn-success{
+    padding: 10px 40px;
+  }
+  .btn-danger{
+    padding: 10px 40px;
+    margin-top: -500px;
+  }
+ section{
+   background-color: #04112e;
+   padding-left: 47%;
+   padding-top: 5%;
+ }
