@@ -43,11 +43,11 @@ body {
     color: white;
 
   }
-  /* #webcam-container{
+  #webcam-container{
     padding-top: 10px;
     padding-left: 500px;
     
-  } */
+  } 
   .btn-success{
     padding: 10px 40px;
   }
@@ -59,4 +59,7 @@ body {
    background-color: #04112e;
    padding-left: 47%;
    padding-top: 5%;
+  }
+  .text-info{
+    color: white;
   }
