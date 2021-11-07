@@ -88,7 +88,7 @@ async function predict() {
     console.log(performanceIndex)
     if (performanceIndex <= 0){
       pauseTrackingUserActivity();
-      // await sendEmail();      
+      await sendEmail();      
     }
     for (let i = 0; i < maxPredictions; i++) {
         const classPrediction =
