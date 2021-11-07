@@ -2,10 +2,11 @@
 // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
 // the link to your model provided by Teachable Machine export panel
-const URL = 'https://teachablemachine.withgoogle.com/models/a-J-UjsEB/';
+const URL = 'https://teachablemachine.withgoogle.com/models/X118HFsQb/';
+
 
 let model, webcam, labelContainer, maxPredictions, performanceIndex, isTracingUserActivity;
-performanceIndex = 1000;
+performanceIndex = 100;
 
 isTracingUserActivity = false;
 
@@ -81,9 +82,10 @@ async function predict() {
     // predict can take in an image, video or canvas html element
     const prediction = await model.predict(webcam.canvas);
     performanceIndex += changeReferenceScore(prediction)
+    console.log(performanceIndex)
     if (performanceIndex <= 0){
       pauseTrackingUserActivity();
-      await sendEmail();      
+      // await sendEmail();      
     }
     // console.log(changeScore(prediction))
     for (let i = 0; i < maxPredictions; i++) {
@@ -94,7 +96,7 @@ async function predict() {
 }
 
 async function sendEmail(){
-  await fetch(route, {
+  await fetch("/email", {
     method: "POST",
     headers: {
         "Content-Type": "application/json; charset=utf-8",

@@ -24,12 +24,12 @@ const app = express();
 const port = 8080;
 
 // Trigger email service in Twilio
-// app.post("/email", async(req,res) => {
-//     // declare your username and email
-//     // const username = "xxx" <--- please change to your name and uncomment this line
-//     // const email = "xxx"    <--- please change to your email and uncomment this line
-//     sendEmailWithTwilio(username, email);
-// })
+app.post("/email", async(req,res) => {
+    // declare your username and email <--- please change to your name and uncomment this line
+    // const username = "xxx" 
+    // const email = ""  
+    sendEmailWithTwilio(username, email);
+})
 
 app.use(express.static(path.join(__dirname, 'public')));
 

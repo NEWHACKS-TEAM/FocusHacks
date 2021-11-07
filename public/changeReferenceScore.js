@@ -12,7 +12,7 @@ function changeReferenceScore(predictions){
     }
 
     const hashTableScores = {
-        "phone": -1,
+        "Not Focused": -1,
         "Focused": 0
     }
     const {className} = mostProbablePrediction
