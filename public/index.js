@@ -82,13 +82,13 @@ async function loop() {
 async function predict() {
     // predict can take in an image, video or canvas html element
     const prediction = await model.predict(webcam.canvas);
-    performanceIndex += changeReferenceScore(prediction)
+    const change = changesInReferenceScore(prediction)
+    performanceIndex += change
     console.log(performanceIndex)
     if (performanceIndex <= 0){
       pauseTrackingUserActivity();
-      // await sendEmail();      
+      await sendEmail();      
     }
-    // console.log(changeScore(prediction))
     for (let i = 0; i < maxPredictions; i++) {
         const classPrediction =
             prediction[i].className + ": " + prediction[i].probability.toFixed(2);

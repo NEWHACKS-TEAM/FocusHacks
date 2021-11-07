@@ -1,4 +1,4 @@
-function changeReferenceScore(predictions){
+function changesInReferenceScore(predictions){
     let mostProbablePrediction = {
         className: '',
         probability: 0
