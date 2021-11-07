@@ -44,7 +44,7 @@ body {
 
   }
   #webcam-container{
-    padding-top: 10px;
+    padding-top: -50px;
     padding-left: 500px;
     
   } 
@@ -62,4 +62,10 @@ body {
   }
   .text-info{
     color: white;
+  }
+  .loading{
+    justify-content: center;
+    align-items: center;
+    padding-left: 750px;
+    padding-top: 100px;
   }
