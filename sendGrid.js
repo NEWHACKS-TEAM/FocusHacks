@@ -339,7 +339,7 @@ function sendWarningEmailWithTwilio(username){
   sgMail
   .send(warningEmailContentConfig(username)) // Change to your recipient
   .then(() => {
-    console.log('Email sent')
+    console.log('Warning email sent')
   })
   .catch((error) => {
     console.error(error)
@@ -351,7 +351,7 @@ function warningEmailContentConfig(username){
     to: process.env.ADMINEMAIL, // Change to your recipient
     from: 'focushacks2021@gmail.com', // Change to your verified sender
     subject: `[WARNING] User's violation of privacy policy`,
-    text: `${username} is violating the privacy policy at ${moment().tz("America/New_York").format("YYYY-MM-DD HH:mm")}`,
+    text: `${username} is violating the privacy policy at ${moment().tz("America/Toronto").format("YYYY-MM-DD HH:mm") }`,
     html: warningEmailBodyHtml(username)
   }
 }

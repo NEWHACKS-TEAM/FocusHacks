@@ -5,8 +5,9 @@
 const URL = 'https://teachablemachine.withgoogle.com/models/X118HFsQb/';
 
 
-let model, webcam, labelContainer, maxPredictions, performanceIndex, isTracingUserActivity;
-performanceIndex = 1000;
+let model, webcam, labelContainer, maxPredictions, performanceIndex, riskIndex, isTracingUserActivity;
+performanceIndex = 400;
+riskIndex = 50;
 
 isTracingUserActivity = false;
 
@@ -85,13 +86,23 @@ async function predict() {
     const prediction = await model.predict(webcam.canvas);
     const change = changesInReferenceScore(prediction)
     performanceIndex += change
-    console.log(performanceIndex)
+    console.log("Focus Index:", performanceIndex)
+
+    if (prediction[2]['probability'] >= 0.9){
+      riskIndex --;
+    }
+    console.log("Risk Index: ", riskIndex)
     // console.log(prediction)
     // console.log(change)
     if (performanceIndex <= 0){
       pauseTrackingUserActivity();
       await sendEmail();      
-    }
+    } 
+
+    if (riskIndex <= 0){
+      pauseTrackingUserActivity();
+      await sendWarningEmail();      
+    } 
     for (let i = 0; i < maxPredictions; i++) {
         const classPrediction =
             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
@@ -106,6 +117,16 @@ async function sendEmail(){
         "Content-Type": "application/json; charset=utf-8",
     },
     body: JSON.stringify({sendEmail: true})
+  });
+};
+
+async function sendWarningEmail(){
+  await fetch("/warning", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json; charset=utf-8",
+    },
+    body: JSON.stringify({sendWarningEmail: true})
   });
 };
 
