@@ -30,6 +30,7 @@ app.post("/email", async(req,res) => {
     const username = process.env.USERNAME
     const email = process.env.EMAIL
     sendEmailWithTwilio(username, email);
+    res.json({success:false});
 })
 
 app.use(express.static(path.join(__dirname, 'public')));
