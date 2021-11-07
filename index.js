@@ -3,22 +3,8 @@ const { initializeApp } = require("firebase/app")
 const express = require('express');
 const path = require('path');
 const fs = require("fs");
-const {sendEmailWithTwilio} = require("./sendGrid")
+const {sendEmailWithTwilio, sendWarningEmailWithTwilio} = require("./sendGrid")
 require('dotenv').config({ path: 'sendgrid.env' })
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const jsonOfApiKey = fs.readFileSync("firebaseApiKey.json");
-// const firebaseConfig = JSON.parse(jsonOfApiKey)
-
-// Initialize Firebase
-// const firebaseApp = initializeApp(firebaseConfig);
-
-// Initialize the Firestore database
-// const db = firebase.firestore();
 
 // Initiate the express server
 const app = express();
@@ -30,7 +16,14 @@ app.post("/email", async(req,res) => {
     const username = process.env.USERNAME
     const email = process.env.EMAIL
     sendEmailWithTwilio(username, email);
-    res.json({success:false});
+    res.json({success:true});
+})
+
+app.post("/warning", async(req,res) => {
+    // declare your username and email <--- please change to your name and uncomment this line
+    const username = process.env.USERNAME
+    sendWarningEmailWithTwilio(username);    
+    res.json({success:true});
 })
 
 app.use(express.static(path.join(__dirname, 'public')));
