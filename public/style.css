@@ -34,7 +34,7 @@ body {
     font-weight: 900;
     color: #66FCF1;
   }
-  .sub-title{
+  .sub-title, #message{
     font-size: 15px;
     justify-content: center;
     align-items: center;
@@ -42,6 +42,16 @@ body {
     font-weight: bold;
     color: white;
 
+  }
+
+  #message{
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    margin-top: 10px;
   }
   #webcam-container{
     padding-top: 10px;

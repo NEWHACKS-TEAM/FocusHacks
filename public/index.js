@@ -6,7 +6,7 @@ const URL = 'https://teachablemachine.withgoogle.com/models/X118HFsQb/';
 
 
 let model, webcam, labelContainer, maxPredictions, performanceIndex, isTracingUserActivity;
-performanceIndex = 100;
+performanceIndex = 1000;
 
 isTracingUserActivity = false;
 
@@ -14,10 +14,11 @@ document.querySelector('#resume').style.display = "none";
 document.querySelector('#pause').style.display = "none";
 
 document.querySelector('#start').addEventListener('click', async () => {
+  document.querySelector("#message").textContent = "";
   document.querySelector('#start').style.display = "none"; 
   isTracingUserActivity = true;
   document.querySelector('#loadingSpinner').innerHTML = `
-  <div class="spinner-border" role="status">
+  <div class="spinner-border text-light" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
   `
@@ -87,7 +88,7 @@ async function predict() {
     console.log(performanceIndex)
     if (performanceIndex <= 0){
       pauseTrackingUserActivity();
-      await sendEmail();      
+      // await sendEmail();      
     }
     for (let i = 0; i < maxPredictions; i++) {
         const classPrediction =
