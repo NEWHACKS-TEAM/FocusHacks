@@ -1,4 +1,4 @@
-# NewHacks2021
+# Focus Reminder
 
 ## Setup for Project Development
 1. Install npm modules
