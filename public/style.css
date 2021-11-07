@@ -43,11 +43,11 @@ body {
     color: white;
 
   }
-  #webcam-container{
+  /* #webcam-container{
     padding-top: 10px;
     padding-left: 500px;
     
-  }
+  } */
   .btn-success{
     padding: 10px 40px;
   }
