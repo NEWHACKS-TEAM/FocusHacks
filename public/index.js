@@ -29,6 +29,7 @@ document.querySelector('#start').addEventListener('click', async () => {
 })
 
 document.querySelector('#resume').addEventListener('click', async () => {
+  performanceIndex = 100;
   document.querySelector('#resume').style.display = "none";
   document.querySelector('#pause').style.display = "";
   isTracingUserActivity = true;
