@@ -1,3 +1,5 @@
+# FocusHacks
+
 ## Inspiration
 Studies show that approximately 80%–95% of university students engage in procrastination to some degree, and about half procrastinate in a consistent and problematic manner[[1]](#citations). 50% of students do not get to make the most out of their day because they get distracted, and FocusHacks is here to change all of that. This web application uses Machine Learning to visually track when the user loses focus, and sends a reminder/motivational quote through email to get back on track, and make the best out of their day. 
 
