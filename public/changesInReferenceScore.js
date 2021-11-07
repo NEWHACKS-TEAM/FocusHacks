@@ -23,12 +23,10 @@ function changesInReferenceScore(predictions){
     //         document.querySelector("#message").textContent = "YOU ARE VIOLATING THE PRIVACY POLICY";
     //     }
     // }
-
-    const hashTableScores = {
-        "Not Focused": -1,
-        "Focused": 0,
-        "VIOLATING PRIVACY": 0,
-    }
     const {className} = mostProbablePrediction
-    return hashTableScores[className]
+    if (className == "Not Focused"){
+        return -1
+    } else {
+        return 0
+    }
 }
