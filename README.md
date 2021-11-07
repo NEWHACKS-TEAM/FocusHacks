@@ -1,5 +1,5 @@
 ## Inspiration
-
+Studies show that approximately 80%–95% of university students engage in procrastination to some degree, and about half procrastinate in a consistent and problematic manner[[1]](#citations). 50% of students do not get to make the most out of their day because they get distracted, and FocusHacks is here to change all of that. This web application uses Machine Learning to visually track when the user loses focus, and sends a reminder/motivational quote through email to get back on track, and make the best out of their day. 
 
 ## What it does
 ### 1. Enhances user’s productivity
@@ -18,14 +18,18 @@
 * Backend: Node.js, Express.js
 * API service for sending emails: Twilio SendGrid
 
+
+
 ## Challenges we ran into
 * Machine Learning model needing more training data 
 * Collaborating with different time zones 
 * Wifi cutting out accidentally
 
+
 ## Accomplishments that we're proud of
 * Built a Machine Learning model that could classifies user's behaviours, and detects users’ behaviours when they are not focusing on their work or violating the privacy policy
 * Capable of sending email reminders to users promptly when the Machine Learning model has detected the users not being focus on their work
+
 
 ## What we learned
 * Collaborating with people with different backgrounds, skills and experiences 
@@ -34,6 +38,7 @@
 * Using Twilio's API to send emails to users
 * Building a web app with both frontend and backend technology
 
+
 ## What's next for FocusHacks
 * Using Auth0 to register and authenticate users to use our service
 * Creating a more powerful machine learning model that could identify more classes
@@ -41,6 +46,9 @@
 * Using Twilio’s communication API’s to far greater levels for user communication to be even more effective
 * Storing our data in database such as PostgreSQL, MongoDB or Firebase
 
+
+## Citations
+[1] Steel, P. (2007). The nature of procrastination: A meta-analytic and theoretical review of quintessential self-regulatory failure. Psychological Bulletin, 133(1), 65–94. [https://doi.org/10.1037/0033-2909.133.1.65](https://doi.org/10.1037/0033-2909.133.1.65)
 
 ## Setup for Project Development
 1. Install npm modules
