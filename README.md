@@ -1,4 +1,4 @@
-# Focus Reminder
+# FocusHacks
 
 ## Setup for Project Development
 1. Install npm modules

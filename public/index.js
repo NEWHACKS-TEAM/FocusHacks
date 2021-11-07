@@ -86,8 +86,8 @@ async function predict() {
     const change = changesInReferenceScore(prediction)
     performanceIndex += change
     console.log(performanceIndex)
-    console.log(prediction)
-    console.log(change)
+    // console.log(prediction)
+    // console.log(change)
     if (performanceIndex <= 0){
       pauseTrackingUserActivity();
       await sendEmail();      
